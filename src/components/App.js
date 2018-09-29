@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import faker from 'faker'
 import uuid from 'uuid/v1'
-import CSS from './App.css'
+import './App.css'
 import Contacts from './ContactComponent/Contacts'
 
 class App extends Component{
@@ -58,8 +58,26 @@ class App extends Component{
         ]
     }
 
+    
+    //Like and unlike Icon Handler
     changeFavoritehandle = (contact) => {
-        
+        let index = this.state.contactList.findIndex(ct => ct.id === contact.id);
+        let contacts = [...this.state.contactList];
+        contacts[index].isFavorite = !contacts[index].isFavorite;
+        this.setState({
+            contacts
+        })
+    }
+
+    //Delete Icon hanlder
+    deletehandler = (contact) => {
+        let index = this.state.contactList.findIndex( ct => ct.id === contact.id);
+        let contacts = [...this.state.contactList];
+
+        contacts.splice(index, 1);
+        this.setState({
+            contacts
+        })
     }
     render(){
         return ( 
@@ -68,7 +86,11 @@ class App extends Component{
                 <div className='container'>
                 
                     
-                    <Contacts contact={this.state.contactList} />
+                    <Contacts 
+                        deletehandler = {this.deletehandler.bind(this)}
+                        favouriteHandler={this.changeFavoritehandle.bind(this)} 
+                        contact={this.state.contactList} 
+                    />
                 </div>
             </div>
         ) 
