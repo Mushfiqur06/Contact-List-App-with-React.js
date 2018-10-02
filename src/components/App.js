@@ -55,7 +55,22 @@ class App extends Component{
                 location: 'Kisko, Finland, 123',
                 isFavorite: false
             }
-        ]
+        ],
+
+        alertDialogSlideOpen: false
+
+    }
+
+    editehandleOpen = () => {
+        this.setState({
+           alertDialogSlideOpen: true 
+        })
+    }
+
+    editehandleClose = () => {
+        this.setState({
+            alertDialogSlideOpen: false
+        })
     }
 
     
@@ -72,6 +87,7 @@ class App extends Component{
     //Delete Icon hanlder
     deletehandler = (contact) => {
         let index = this.state.contactList.findIndex( ct => ct.id === contact.id);
+        console.log(index);
         let contacts = [...this.state.contactList];
 
         contacts.splice(index, 1);
@@ -87,6 +103,7 @@ class App extends Component{
                 
                     
                     <Contacts 
+                        editehandleOpen = {this.editehandleOpen.bind(this)}
                         deletehandler = {this.deletehandler.bind(this)}
                         favouriteHandler={this.changeFavoritehandle.bind(this)} 
                         contact={this.state.contactList} 
