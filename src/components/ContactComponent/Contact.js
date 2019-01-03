@@ -4,7 +4,6 @@ import './Contact.css'
 class Contact extends Component{
     
     render(){
-        console.log(this.props.deletehandler(this.props.contact))
         return (
             <div className='col-sm-4'>
                 <div className='singleContactWrapper'>

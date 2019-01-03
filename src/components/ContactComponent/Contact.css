@@ -53,6 +53,9 @@
 .contactPersonInfo h3 {
     margin: 0 0px 10px 0;
     font-size: 18px;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .contactPersonInfo .phone{
     font-family: 'Poppins', sans-serif;

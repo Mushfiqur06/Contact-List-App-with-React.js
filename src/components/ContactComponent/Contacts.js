@@ -9,7 +9,12 @@ class Contacts extends Component{
 
         return <div className='row'>
             {this.props.contact.map((contact, index) => {
-                return <Contact contact={contact} key={index} />
+                return <Contact 
+                    editehandleOpen = {this.props.editehandleOpen}
+                    deletehandler = {this.props.deletehandler}
+                    favouriteHandler={this.props.favouriteHandler} 
+                    contact={contact} key={index} 
+                />
             })}
         </div>
         
