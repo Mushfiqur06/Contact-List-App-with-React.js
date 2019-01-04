@@ -3,6 +3,7 @@ import faker from 'faker'
 import uuid from 'uuid/v1'
 import './App.css'
 import Contacts from './ContactComponent/Contacts'
+import EditContact from './editComponent/editContact'
 
 class App extends Component{
     state = {
@@ -57,7 +58,8 @@ class App extends Component{
             }
         ],
 
-        alertDialogSlideOpen: false
+        alertDialogSlideOpen: false,
+        selectedContact: {}
 
     }
 
@@ -129,6 +131,20 @@ class App extends Component{
 
         this.setState({
             contacts
+        })
+    }
+
+    //Edit COntact Handler
+    editConctactHandler = (contact) => {
+        this.setState({
+            selectedContact: contact
+        })
+    }
+
+    //Remove Selected Contact
+    removeSelectedContact = () => {
+        this.setState({
+            selectedContact: null
         })
     }
 
